@@ -1,0 +1,56 @@
+body {
+    background: rgb(29, 29, 32);
+    color: rgb(136, 136, 143);
+}
+/* "convert" button */
+.button {
+    border-radius:8px;
+    background-color: rgb(5, 177, 5);
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* legend and input are related to fieldset for radio buttons */
+legend {
+    padding: 3px 6px;
+}
+
+input {
+    margin: .4rem;
+}
+
+
+/* section with radio buttons for choosing the font for output  */
+.radioStyle {
+	margin-bottom: 10px;
+}
+.radioStyle input[type=radio] {
+	display: none;
+}
+.radioStyle label {
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding-left: 25px;
+	margin-right: 0;
+	line-height: 18px;
+	user-select: none;
+}
+.radioStyle label:before {
+	content: "";
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+    border-radius: 50%;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background-color: rgb(232, 241, 232);
+}
+ 
+/* Checked */
+.radioStyle input[type=radio]:checked + label:before {
+	background: rgb(5, 177, 5);
+}
+ 
