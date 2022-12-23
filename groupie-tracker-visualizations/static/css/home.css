@@ -1,0 +1,113 @@
+body {
+    background-image: url("wallpaperflare.com_wallpaper(8).jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    
+}
+
+h1 {
+	text-align: center;
+	letter-spacing: 10;
+	font-size: 300%;
+	font-family: "Bebas Neue", script, monospace;
+	
+	border-radius: 25px;
+  color:rgb(0, 190, 0);
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+
+}
+
+
+.title {
+  text-align: center;
+  margin-top: 10px;
+  color: rgb(0, 0, 0);
+ 
+  border-radius: 25px;
+    
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+.title:hover {
+  color:rgb(132, 248, 0)
+}
+
+.title:active {
+  transform: translateY(3px);
+  color: rgb(196, 236, 18);
+}
+
+.artLink {
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.imageButton {
+  outline: none;
+  display:block;
+  padding: -1px;
+  margin: -1px;
+  cursor: pointer;
+  background-color: rgb(196, 255, 204);
+}
+
+.imageButton:active {
+  transform: translateY(3px);
+}
+
+.nameButton {
+  outline: none;
+  display:block;
+  padding: -1px;
+  margin: -1px;
+}
+
+
+
+.groups-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 1fr;
+    grid-row-gap: 25px;
+    grid-column-gap: 25px;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+    margin-top: 200px;
+}
+
+@media (min-width: 400px) {
+    .groups-grid { grid-template-columns: repeat(1, 1fr); }
+  }
+
+@media (min-width: 800px) {
+    .groups-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+@media (min-width: 1000px) {
+    .groups-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (min-width: 1700px) {
+    .groups-grid { grid-template-columns: repeat(4, 1fr); }
+  }

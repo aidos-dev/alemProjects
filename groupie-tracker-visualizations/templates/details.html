@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie-tracker</title>
+
+        <!-- favicon picture link -->
+        <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+        <!-- CSS file link -->
+        <link rel="stylesheet" href="/static/css/details.css"> 
+        <!-- google font link -->
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    <h1><a href="/">Groupie-tracker</a></h1>
+
+    <div class="groups-info">
+
+        <h2 class="title">{{.Group.Name}}</h2>
+
+        <img class="groups-info" src="{{.Group.Image}}" alt="album cover">
+
+       
+        <h3 class="groups-info">Group members</h3>
+
+        <div>
+            {{range .Group.Members}}
+                {{.}}
+                <br>
+            {{end}}
+        </div> 
+      
+      
+        
+       
+        <h3 class="groups-info">The date of creation</h3>
+
+        <h4 class="groups-info"> {{.Group.CreationDate}} </h4>
+
+        
+        <h3 class="groups-info">First album</h3>
+
+        <h4 class="groups-info"> {{.Group.FirstAlbum}} </h4>
+
+        
+        <h3 class="groups-info">Concerts</h3>
+
+        
+       
+
+        <div class="locarions">
+            {{range $key, $value := .Relations.DateLocs}}
+            
+            <h5>  {{$key}} </h5>
+                <div class="dates">
+                        {{range $value }}
+                            {{.}}
+                            <br>
+                         {{end}}
+                </div>
+            
+
+            {{end}}
+        </div>
+    
+
+    </div>
+    
+
+</body>
+</html>

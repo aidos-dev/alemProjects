@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie-tracker</title>
+
+        <!-- favicon picture link -->
+        <link rel="shortcut icon" href="static/favicon/favicon.ico">
+        <!-- CSS file link -->
+        <link rel="stylesheet" href="/static/css/home.css"> 
+        <!-- google font link -->
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    <h1>Groupie-tracker</h1>
+
+    <div class="groups-grid">
+
+        {{range .}}
+        <div>
+            <!-- <form type="submit" name="artLinkVal" value="{{.Id}}" method="post"> -->
+               
+                <a  class="artLink" href="http://localhost:4000/details/?id={{.Id}}">
+
+                    <button class="imageButton">
+                        <img src="{{.Image}}" alt="album cover">
+                    </button>
+
+                    <!-- <button class="imageButton"> -->
+                        <h4 class="title">{{.Name}}</h4> 
+                    <!-- </button> -->
+                    
+
+                </a>
+         
+
+            <!-- </form> -->
+         
+            
+     
+        </div>
+     
+
+        {{end}}
+
+    </div>
+
+</body>
+</html>

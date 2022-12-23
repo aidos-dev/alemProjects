@@ -1,0 +1,72 @@
+body {
+    background-color: black;
+}
+
+.neonText {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+        font-size: 4.2rem;
+  animation: flicker 1.5s infinite alternate; 
+  }
+
+  .homeLink {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+
+  .homeLink a {
+    text-decoration: none;
+    color: rgb(123, 255, 134);
+  }
+
+  .homeLink:active {
+    transform: translateY(3px);
+  }
+
+  .button {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button:active {
+    transform: translateY(3px);
+  }
+  
+
+  /* Flickering animation */
+@keyframes flicker {
+    
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }   

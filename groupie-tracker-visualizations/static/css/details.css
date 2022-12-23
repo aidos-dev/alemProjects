@@ -1,0 +1,108 @@
+body {
+    background-image: url("wallpaperflare.com_wallpaper(8).jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    
+}
+
+h1 {
+	text-align: center;
+	letter-spacing: 10;
+	font-size: 300%;
+	font-family: "Bebas Neue", script, monospace;
+	
+	border-radius: 25px;
+    color:rgb(0, 190, 0);
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1:active {
+  transform: translateY(3px);
+}
+
+
+.title {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.title {
+  margin-top: 200px;
+}
+
+.groups-info {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+    align-items: center;
+  	font-family: "Bebas Neue", script, monospace;
+	
+	border-radius: 25px;
+  color:rgb(0, 0, 0);
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+h3{
+  margin-top: 50px;
+  margin-bottom: 20px;
+  
+}
+
+h4 {
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 17px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+  color: rgb(0, 0, 0);
+}
+
+
+@media (min-width: 400px) {
+    .groups-grid { grid-template-columns: repeat(1, 1fr); }
+  }
+
+@media (min-width: 800px) {
+    .groups-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+@media (min-width: 1000px) {
+    .groups-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+.locations {
+  color: rgb(0, 0, 0);
+}
+
+.dates {
+  color: rgb(0, 0, 0);
+}

@@ -1,0 +1,67 @@
+{{ define "home" }}
+
+{{ template "header" }}
+    
+
+<main>    
+    <h1>ascii-art</h1>
+    <p> Hello! Here you can transform any words that you want to ascii-art format. </p>
+    <p>Just input some text to the little window bellow, choose one of three fonts: 
+        standard, shadow or thinkertoy and click the "Convert" button</p>   
+    
+</main>
+
+    <div>
+        <form method="POST">
+
+            <!-- section with radio buttons for choosing the font for output -->
+            <p>
+                <fieldset class="radioField">
+                    <legend>Select a font:</legend>
+                
+                    <div class="radioStyle">
+                      <input  type="radio" id="stand" name="banner" value="standard" checked>
+                      <label for="stand">Standard</label>
+                    </div>
+                
+                    <div class="radioStyle">
+                      <input  type="radio" id="shad" name="banner" value="shadow">
+                      <label for="shad">Shadow</label>
+                    </div>
+                
+                    <div class="radioStyle">
+                      <input  type="radio" id="think" name="banner" value="thinkertoy">
+                      <label for="think">Thinkertoy</label>
+                    </div>
+                </fieldset>
+            </p>
+            
+            <!-- section for the text area for string input to be converted -->
+            <p>
+                 <textarea  id="inputString" rows="4" cols="30" name="inputString" type="text" placeholder="input your text here..." required></textarea>
+            </p>
+           
+
+             <button class="button" >Convert</button>
+            
+
+        </form>
+    </div>
+
+    <form method="GET" action="/save" >
+
+      <div>
+        <pre class="ascii" name="asciiOutput" >{{ . }}</pre>
+
+        <button class="button" name="save" type="submit" >Save</button>
+      </div>
+
+      
+
+    </form>
+    
+
+{{ template "footer" }}
+
+{{ end }}
+    
