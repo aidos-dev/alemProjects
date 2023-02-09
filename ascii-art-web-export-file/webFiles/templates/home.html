@@ -38,7 +38,7 @@
             
             <!-- section for the text area for string input to be converted -->
             <p>
-                 <textarea  id="inputString" rows="4" cols="30" name="inputString" type="text" placeholder="input your text here..." required></textarea>
+                 <textarea  id="inputString" rows="4" cols="30" name="inputString" type="text" placeholder="input your text here..." required>{{ .Input }}</textarea>
             </p>
            
 
@@ -51,7 +51,7 @@
     <form method="GET" action="/save" >
 
       <div>
-        <pre class="ascii" name="asciiOutput" >{{ . }}</pre>
+        <pre class="ascii" name="asciiOutput" >{{ .AsciiArt }}</pre>
 
         <button class="button" name="save" type="submit" >Save</button>
       </div>

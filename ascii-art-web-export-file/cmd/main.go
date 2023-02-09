@@ -16,7 +16,13 @@ import (
 this variable (outputGlobal) is created as global in order to hold data (string) from user ascii-art output
 and write it to a .txt file when user clicks the "save" button
 */
-var outputGlobal string
+// var outputGlobal string
+type inputAndAscii struct {
+	Input    string
+	AsciiArt string
+}
+
+var outputGlobal inputAndAscii
 
 func main() {
 	HandleRequest()
@@ -96,7 +102,7 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 		FormValue func parses input text from the home page text area and stores it to inputArg variable
 		inputArg := ""
 	*/
-	inputArg := r.FormValue("inputString")
+	InputArg := r.FormValue("inputString")
 
 	if err != nil {
 		log.Print(err)
@@ -104,12 +110,12 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method != "POST" && r.Method != "GET" {
-		fmt.Println(r.Method, inputArg)
+		fmt.Println(r.Method, InputArg)
 		errorHandler(w, http.StatusMethodNotAllowed, "Method Not Allowed. Status: 405")
 		return
 	}
 
-	Output, err, errHttpCode := ascii.AsciiConv(inputArg, bannerInp)
+	Output, err, errHttpCode := ascii.AsciiConv(InputArg, bannerInp)
 	if err != nil {
 
 		if errHttpCode == 400 {
@@ -123,9 +129,10 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	outputGlobal = Output
+	outputGlobal.Input = InputArg
+	outputGlobal.AsciiArt = Output
 
-	tmpl.ExecuteTemplate(w, "home", Output)
+	tmpl.ExecuteTemplate(w, "home", outputGlobal)
 }
 
 func save(w http.ResponseWriter, r *http.Request) {
@@ -135,11 +142,11 @@ func save(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var write []byte
-	write = append(write, []byte(outputGlobal)...)
+	write = append(write, []byte(outputGlobal.AsciiArt)...)
 
 	w.Header().Set("Content-Disposition", "attachment; filename=ascii-art.txt")
 	w.Header().Set("Content-Type", "text/plain")
-	w.Header().Set("Content-Length", strconv.Itoa(len(outputGlobal)))
+	w.Header().Set("Content-Length", strconv.Itoa(len(outputGlobal.AsciiArt)))
 	err := ioutil.WriteFile("webFiles/static/files/ascii-art.txt", write, 0o644)
 	if err != nil {
 		fmt.Println(err)
