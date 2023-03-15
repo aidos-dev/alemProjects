@@ -1,0 +1,90 @@
+{{$filterBy := .HeadingFilter}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/download.png" type="image/x-icon">
+    <title>Salem Alem</title>
+</head>
+<body id="body">
+    <header >
+        <div class="header__wrapper">
+
+          <div>
+            <a class="header__logo logo" href="/">AlemBook </a>
+            <span class="userName">{{.User.Username}}</span>
+          </div>
+            
+
+            <div class="header__filter">
+              <a class="personal__liked" href="/filter?filter_by=i_liked">I liked</a>
+              <a class="personal__created" href="/filter?filter_by=i_created">I created</a>
+              <a href="/filter?filter_by=oldest">Oldest posts</a>
+              <a href="/filter?filter_by=recent">Latest posts</a>
+              <a href="/filter?filter_by=most_disliked">Most Disliked</a>
+              <a href="/filter?filter_by=most_liked">Most Liked</a>
+              <a href="/filter?filter_by=discussions">Discussions</a>
+              <a href="/filter?filter_by=questions">Questions</a>
+              <a href="/filter?filter_by=ideas">Ideas</a>
+              <a href="/filter?filter_by=articles">Articles</a>
+              <a href="/filter?filter_by=events">Events</a>
+              <a href="/filter?filter_by=issues">Issues</a>
+            </div>
+            <div class="header__user">
+              <a class="button" href="/create-post">Create post</a>
+              <a class="button button__signup" href="/logout">Log out</a>
+            </div>
+
+        </div>
+    </header>
+    <main>
+        <h1 class="visually-hidden">FORUM</h1>
+        <div class="main-wrapper">
+            <section class="latest-posts">
+              {{ if not .Posts}}
+                <h2 class="latest-post__heading">We need to talk...</h2>
+                <ul class="latest-posts__list">
+                  {{else }}
+                  <h2 class="latest-post__heading">{{$filterBy}}</h2>
+                  <ul class="latest-posts__list">
+                    {{range .Posts}}
+                      <li class="latest-posts__item">
+                          <article class="post">
+                            <header class="post__header">
+                              
+                              <address><span>By:</span><a href="">{{.Username}}</a></address>
+                              <div class="post__categories">
+                                {{range .Categories}}
+                                <span>{{.}}</span>
+                                {{end}}
+                              </div>
+                            </header>
+                            <section class="post__main">
+                              <h3>{{.Heading}}</h3>
+                              <p class="post__text">{{.Text}}...<a href="post?id={{.PostId}}">Read more</a></p>
+                            </section>
+                            <footer class="post__footer">
+                              <span class="post__info-comments"><a href="post?id={{.PostId}}">{{.AmountComments}} comments</a></span>
+                              <span class="post__info-likes">{{sub .AmountLikes .AmountDisLikes}}</span>
+                            </footer>  
+                          </article>
+                      </li>
+                      {{end}}
+                    {{end}}
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <a class="footer__logo logo" href="/">Salem Alem</a>
+            <div class="footer__legal">
+                <p>&#169;2022. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

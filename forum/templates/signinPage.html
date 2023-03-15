@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/download.png" type="image/x-icon">
+    <title>Log in</title>
+</head>
+<body id="body">
+    <header >
+        <div class="header__wrapper">
+            <a class="header__logo logo" href="/">AlemBook</a>
+    </header>
+    <main>
+        <h1 class="visually-hidden">Sign-in page</h1>
+            <form class="form main-sign-in" action="/signin" method="post">
+                <fieldset>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" title="Username must be between 6 to 50 characters long" required pattern="[A-Za-z0-9\-_\.]{6,50}">
+                </fieldset>
+                <fieldset>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" title ="
+At least 1 Lowercase
+At least 1 Number
+Min 4 chars" required pattern="^(?=.*[a-z])(?=.*[0-9]).{4,120}$">
+                </fieldset>
+                <button class="button" type="submit">Login</button>
+            </form>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <a class="footer__logo logo" href="/">Salem Alem</a>
+            <div class="footer__legal">
+                <p>&#169;2022. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

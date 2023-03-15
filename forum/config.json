@@ -1,0 +1,11 @@
+{
+    "http": {
+        "port": "8081",
+        "write_timeout": 30,
+        "read_timeout": 30
+    },
+    "database": {
+        "name": "database.db",
+        "options": "?_foreign_keys=on"
+    }
+}

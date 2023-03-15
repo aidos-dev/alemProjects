@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/download.png" type="image/x-icon">
+    <title>Create post by {{.}}</title>
+</head>
+<body id="body">
+    <header >
+        <div class="header__wrapper">
+            <a class="header__logo logo" href="/">AlemBook</a>
+            <div class="header__filter">
+                <a href="/filter?filter_by=oldest">Oldest posts</a>
+                <a href="/filter?filter_by=recent">Latest posts</a>
+                <a href="/filter?filter_by=most_disliked">Most Disliked</a>
+                <a href="/filter?filter_by=most_liked">Most Liked</a>
+                <a href="/filter?filter_by=discussions">Discussions</a>
+                <a href="/filter?filter_by=questions">Questions</a>
+                <a href="/filter?filter_by=ideas">Ideas</a>
+                <a href="/filter?filter_by=articles">Articles</a>
+                <a href="/filter?filter_by=events">Events</a>
+                <a href="/filter?filter_by=issues">Issues</a>
+            </div>
+    </header>
+    <main>
+        <h1 class="visually-hidden">Create post page</h1>
+        <h2 class="latest-post__heading">Create post</h2>
+            <form class="form main-create-post" action="/create-post" method="post">
+                <fieldset>
+                    <label for="heading">Heading</label>
+                    <input required type="text" name="heading" id="heading" maxlength="200" title="Heading must be lower thab 200 characters long"></input>
+                </fieldset>
+                <fieldset>
+                    <label for="category">Choose a category:</label>
+                    <select required multiple name="category" id="category">
+                      <option value="1">Discussions</option>
+                      <option value="2">Questions</option>
+                      <option value="3">Ideas</option>
+                      <option value="4">Articles</option>
+                      <option value="5">Events</option>
+                      <option value="6">Issues</option>
+                    </select>
+                  </fieldset>
+                <fieldset>
+                    <label for="post">Type a text</label>
+                    <textarea required name="text" id="post" minlength="6" maxlength="1500" title="Post must be between 6 and 1500 characters long"></textarea>
+                </fieldset>
+                <button class="button" type="submit">Post</button>
+            </form>
+    </main>
+    <footer class="footer">
+        <div class="footer__wrapper">
+            <a class="footer__logo logo" href="/">Salem Alem</a>
+            <div class="footer__legal">
+                <p>&#169;2022. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

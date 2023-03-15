@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{$authPerson := .Auth}}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/static/images/download.png"
+      type="image/x-icon"
+    />
+    <title>Post: {{.Post.Heading}}</title>
+  </head>
+
+  <body id="body">
+    <header>
+      <div class="header__wrapper">
+        <div>
+          <a class="header__logo logo" href="/">AlemBook </a>
+          {{ if .Auth}}
+          <span class="userName">{{.User.Username}}</span>
+          {{end}}
+        </div>
+
+        <div class="header__filter">
+          {{if $authPerson}}
+          <a class="personal__liked" href="/filter?filter_by=i_liked"
+            >I liked</a
+          >
+          <a class="personal__created" href="/filter?filter_by=i_created"
+            >I created</a
+          >
+          {{end}}
+          <a href="/filter?filter_by=oldest">Oldest posts</a>
+          <a href="/filter?filter_by=recent">Latest posts</a>
+          <a href="/filter?filter_by=most_disliked">Most Disliked</a>
+          <a href="/filter?filter_by=most_liked">Most Liked</a>
+          <a href="/filter?filter_by=discussions">Discussions</a>
+          <a href="/filter?filter_by=questions">Questions</a>
+          <a href="/filter?filter_by=ideas">Ideas</a>
+          <a href="/filter?filter_by=articles">Articles</a>
+          <a href="/filter?filter_by=events">Events</a>
+          <a href="/filter?filter_by=issues">Issues</a>
+        </div>
+        <div class="header__user">
+          {{ if .Auth}}
+          <a class="button" href="/create-post">Create post</a>
+          <a class="button button__signup" href="/logout">Log out</a>
+          <!-- <span>{{.User.Username}}</span> -->
+          {{else}}
+          <a class="button button__login" href="/signin">Log In</a>
+          <a class="button button__signup" href="/signup">Sign Up</a>
+          {{end}}
+        </div>
+      </div>
+    </header>
+    <main>
+      <h1 class="visually-hidden">FORUM</h1>
+      <div class="main-wrapper">
+        <section class="main-post">
+          <article class="post">
+            <header class="post__header">
+              <address>
+                <span>By: </span><a href="">{{.Post.Username}}</a>
+              </address>
+              <div class="post__categories">
+                {{range .Post.Categories}}
+                <span>{{.}}</span>
+                {{end}}
+              </div>
+            </header>
+            <section class="post__main">
+              <h3>{{.Post.Heading}}</h3>
+              <p class="post__text">{{.Post.Text}}</p>
+            </section>
+            <footer class="post__footer">
+              <span class="post__info-likes"
+                >Likes: {{ sub .Post.AmountLikes .Post.AmountDisLikes}}</span
+              >
+              {{if .Auth}}
+              <form action="/likeup" method="post">
+                <button class="like-up-post" type="submit"></button>
+                <input type="hidden" name="postId" value="{{.Post.PostId}}" />
+                <input type="hidden" name="positive" value="true" />
+                <input type="hidden" name="reactTo" value="post" />
+              </form>
+              <form action="/likedown" method="post">
+                <button class="like-down-post" type="submit"></button>
+                <input type="hidden" name="postId" value="{{.Post.PostId}}" />
+                <input type="hidden" name="positive" value="false" />
+                <input type="hidden" name="reactTo" value="post" />
+              </form>
+              {{end}}
+            </footer>
+          </article>
+        </section>
+        <section class="main-comments">
+          <ul class="comments__list">
+            {{range .Comments}}
+            <li class="comment__item">
+              <article class="comment">
+                <header class="comment__header">
+                  <address>
+                    <span>By: </span><a href="">{{.Username}}</a>
+                  </address>
+                  <time datetime="2022-10-28"></time>
+                </header>
+                <section class="comment__main">
+                  <p class="comment__text">{{.Text}}</p>
+                </section>
+                <footer class="comment__footer">
+                  <span class="comment__info-likes"
+                    >Likes: {{sub .AmountLikes .AmountDisLikes}}</span
+                  >
+                  {{if $authPerson}}
+                  <form action="/likeup" method="post">
+                    <button class="like-up-comment" type="submit"></button>
+                    <input type="hidden" name="postId" value="{{.PostId}}" />
+                    <input
+                      type="hidden"
+                      name="commentId"
+                      value="{{.CommentId}}"
+                    />
+                    <input type="hidden" name="positive" value="true" />
+                    <input type="hidden" name="reactTo" value="comment" />
+                  </form>
+                  <form action="/likedown" method="post">
+                    <button class="like-down-comment" type="submit"></button>
+                    <input type="hidden" name="postId" value="{{.PostId}}" />
+                    <input
+                      type="hidden"
+                      name="commentId"
+                      value="{{.CommentId}}"
+                    />
+                    <input type="hidden" name="positive" value="false" />
+                    <input type="hidden" name="reactTo" value="comment" />
+                  </form>
+                  {{end}}
+                </footer>
+              </article>
+            </li>
+            {{end}}
+          </ul>
+        </section>
+        {{if .Auth}}
+        <section class="new-comment">
+          <form
+            class="form main-create-new-comment"
+            action="/create-comment"
+            method="post"
+          >
+            <fieldset>
+              <label for="comment">Type a comment</label>
+              <textarea
+                required
+                name="comment"
+                id="comment"
+                minlength="1"
+                maxlength="1500"
+              ></textarea>
+            </fieldset>
+            <input type="hidden" name="postId" value="{{.Post.PostId}}" />
+            <input type="hidden" name="userId" value="{{.User.ID}}" />
+            <button class="button" type="submit">Comment</button>
+          </form>
+        </section>
+        {{end}}
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__wrapper">
+        {{if .Auth}}
+        <a class="footer__logo logo" href="/">Salem Alem</a>
+        {{else}}
+        <a class="footer__logo logo" href="/">Salem Alem</a>
+        {{end}}
+        <div class="footer__legal">
+          <p>&#169;2022. All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
